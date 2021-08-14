@@ -8,8 +8,7 @@ class User < ApplicationRecord
   validates :nickname
 
   # 半角英数字が含まれる６字以上の場合のみ許可する
-  validates :password, format: {with: /\A[a-z0-9]+\z/i	, message: "is invalid. Include both letters and numbers."}
-
+  validates :password,format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'is invalid. Include both letters and numbers.' }
   end
 end
 
