@@ -120,7 +120,7 @@
   </div>
   <%# /FURIMAの特徴 %>
 
-  <%# 商品一覧 %>
+  <%# 問題一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
@@ -129,7 +129,7 @@
     <ul class='item-lists'>
       <% @question.each do |question| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to question_path(question.id),method: :get do %>
         <div class='item-img-content'>
 
           <%# 画像が保存されていなければ,画像非表示にするかサンプルの画像が表示されるようにする %>
