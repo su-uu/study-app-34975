@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  
+
   def index
   end
 
@@ -18,8 +18,8 @@ class QuestionsController < ApplicationController
   end
 
   private
+
   def question_params
     params.require(:question).permit(:title, :text, :answer, :image).merge(user_id: current_user.id)
   end
-
 end

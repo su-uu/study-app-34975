@@ -4,7 +4,7 @@ RSpec.describe Question, type: :model do
   describe '問題投稿' do
     before do
       @question = FactoryBot.build(:question)
-      @question.image = fixture_file_upload("app/assets/images/furima-logo-color.png")
+      @question.image = fixture_file_upload('app/assets/images/furima-logo-color.png')
     end
 
     context '問題の投稿ができるとき' do
@@ -48,7 +48,7 @@ RSpec.describe Question, type: :model do
       it 'userが紐付いていないと保存できないこと' do
         @question.user = nil
         @question.valid?
-        expect(@question.errors.full_messages).to include("User must exist")
+        expect(@question.errors.full_messages).to include('User must exist')
       end
     end
   end
