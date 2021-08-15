@@ -7,7 +7,7 @@
     <h2 class="items-sell-title">問題の情報を入力</h2>
     <%= form_with model: @question,local: true do |f| %>
 
-    <% render 'devise/shared/error_messages', model: f.object %>
+    <%= render 'devise/shared/error_messages', model: f.object %>
 
     <%# 問題画像 %>
     <div class="img-upload">
