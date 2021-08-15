@@ -1,0 +1,81 @@
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">問題の情報を入力</h2>
+    <%= form_with model: @question,local: true do |f| %>
+
+    <%= render 'devise/shared/error_messages', model: f.object %>
+
+    <%# 問題画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        問題画像
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード　※必須ではありません
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /問題画像 %>
+
+    <%# 問題名と問題文 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        問題名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"問題名（必須 40文字まで)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          問題文
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"問題文（必須 1,000文字まで）例）国語が80点、英語が70点、数学が90点の場合のテストの平均点をターミナルに出力するプログラムを記述してください。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /商品名と商品説明 %>
+
+    <%# 解答欄 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        解答
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :answer, class:"items-text", id:"item-info", placeholder:"解答（必須 1,000文字まで）問題によってコードなどの回答も可" ,rows:"7" ,maxlength:"1000" %>
+    </div>
+    <%# /解答欄 %>
+
+
+    <%# 注意書き %>
+    <div class="caution">
+      <p class="sentence">
+        解答は「解答ボタン」を押すまで非表示の状態となります。
+      </p>
+    </div>
+    <%# /注意書き %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "投稿する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">フリマ利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎Furima,Inc.
+    </p>
+  </footer>
+</div>
