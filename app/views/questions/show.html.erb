@@ -31,19 +31,12 @@
         <%# </span>
       </div> %>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
-    <%= link_to "問題の編集", "#", method: :get, class: "item-red-btn" %>
-    <p class="or-text">or</p>
-    <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
-
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
+    <% if user_signed_in? && current_user.id == @question.user_id %>
+        <%= link_to "問題の編集", "#", method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
+    <% end %>
+    <%= link_to "回答画面に進む", "#" ,class:"item-red-btn"%>
     <div class="item-explain-box">
       <span><%= "問題説明" %></span>
     </div>
@@ -60,10 +53,6 @@
         <tr>
           <th class="detail-item">問題文</th>
           <td class="detail-value"><%= @question.text %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">解答</th>
-          <td class="detail-value"><%= @question.answer %></td>
         </tr>
       </tbody>
     </table>
