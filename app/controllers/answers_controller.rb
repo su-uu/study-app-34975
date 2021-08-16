@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      redirect_to controller: 'answers', action: 'show', id:@answer.id
+      redirect_to controller: 'answers', action: 'show', id: @answer.id
     else
       render :index
     end
