@@ -23,8 +23,8 @@ RSpec.describe Question, type: :model do
         @question.text = 'a'
         expect(@question).to be_valid
       end
-      it 'answerが入力されていれば保存できること' do
-        @question.answer = 'a'
+      it 'hide_answerが入力されていれば保存できること' do
+        @question.hide_answer = 'a'
         expect(@question).to be_valid
       end
     end
@@ -40,10 +40,10 @@ RSpec.describe Question, type: :model do
         @question.valid?
         expect(@question.errors.full_messages).to include("Text can't be blank")
       end
-      it 'answerが空では保存できないこと' do
-        @question.answer = ''
+      it 'hide_answerが空では保存できないこと' do
+        @question.hide_answer = ''
         @question.valid?
-        expect(@question.errors.full_messages).to include("Answer can't be blank")
+        expect(@question.errors.full_messages).to include("Hide answer can't be blank")
       end
       it 'userが紐付いていないと保存できないこと' do
         @question.user = nil

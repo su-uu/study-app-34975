@@ -1,44 +1,17 @@
-<%= render "devise/shared/header" %>
+<%# <%= render "devise/shared/header" %>
 
 <%# 問題の概要 %>
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= @question.title %>
+      <%= @question.title %>の解答欄
     </h2>
     <div class="item-img-content">
       <%= image_tag @question.image ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <%# <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div> %>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
-    <%# <h2 class="name">
-      問題文
-    </h2>
-    <div class="item-price-box">
-      <span class="item-price">
-        <%= @question.text %>
-      <%# </span>
-    </div>
-      <h2 class="name">
-        解答
-      </h2>
-      <div class="item-price-box">
-        <span class="item-price">
-          <%= @question.answer %>
-        <%# </span>
-      </div> %>
 
-    <% if user_signed_in? && current_user.id == @question.user_id %>
-        <%= link_to "問題の編集", edit_question_path, method: :get, class: "item-red-btn" %>
-        <p class="or-text">or</p>
-        <%= link_to "削除", question_path(@question.id), method: :delete, class:"item-destroy" %>
-    <% end %>
-    <%= link_to "解答画面に進む", question_answers_path(@question.id), class:"item-red-btn"%>
     <div class="item-explain-box">
-      <span><%= "問題説明" %></span>
+      <span><%= "問題の詳細" %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -54,6 +27,14 @@
           <th class="detail-item">問題文</th>
           <td class="detail-value"><%= @question.text %></td>
         </tr>
+        <tr>
+          <th class="detail-item">模範解答</th>
+          <td class="detail-value"><%= @question.hide_answer %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">あなたの解答</th>
+          <td class="detail-value"><%= @answer.input_answer %></td>
+        </tr>
       </tbody>
     </table>
     <div class="option">
@@ -66,6 +47,7 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
+    <%= link_to "トップページに戻る", question_answer_path(@answer.id), method: :delete, class:"item-destroy" %>
   </div>
   <%# /問題の概要 %>
 

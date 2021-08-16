@@ -1,0 +1,44 @@
+<%= render "devise/shared/second-header"%>
+
+<div class='transaction-contents'>
+  <div class='transaction-main'>
+    <h1 class='transaction-title-text'>
+      <%= @question.title %>
+    </h1>
+    <div class="item-img-content">
+      <%= image_tag @question.image ,class:"item-box-img" %>
+    </div>
+
+    <%# 問題文 %>
+    <div class='credit-card-form'>
+      <div class="new-items">
+        <div class="items-explain">
+          <div class="weight-bold-text">
+            問題文
+          </div>
+          <%= @question.text %>
+        </div>
+      </div>
+    </div>
+    <%# /問題文 %>
+
+    <%= form_with model: @answer, url:question_answers_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= render 'devise/shared/error_messages', model: @answer %>
+
+    <%# 解答欄 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        解答
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :input_answer, class:"items-text", id:"item-info", placeholder:"解答（必須 1,000文字まで）問題によってコードなどの回答も可" ,rows:"7" ,maxlength:"1000" %>
+    </div>
+    <%# /解答欄 %>
+
+    <div class='buy-btn'>
+      <%= f.submit "解答ボタン" ,class:"buy-red-btn" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<%= render "devise/shared/second-footer"%>
