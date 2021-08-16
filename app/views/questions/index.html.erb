@@ -132,17 +132,20 @@
         <%= link_to question_path(question.id),method: :get do %>
         <div class='item-img-content'>
 
-          <%# 画像が保存されていなければ,画像非表示にするかサンプルの画像が表示されるようにする %>
-          <%# <%= image_tag "item-sample.png", class: "item-img" %>
-          <%= image_tag question.image, class: "item-img" %>
-          <%# //画像が保存されていなければ,画像非表示にするかサンプルの画像が表示されるようにする %>
+          <%# 画像が保存されていなければ,サンプルの画像が表示される %>
+          <% if question.image.attached? %>
+            <%= image_tag question.image, class: "item-img" %>
+          <% else %>
+            <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+          <% end %>
+          <%# //画像が保存されていなければ,サンプルの画像が表示される %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
             <%# <div class='sold-out'>
             <span>Sold Out!!</span>
             </div> %>
           <%# //商品が売れていればsold outを表示しましょう %>
-          
+
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
