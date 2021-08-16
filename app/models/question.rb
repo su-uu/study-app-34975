@@ -1,6 +1,6 @@
 class Question < ApplicationRecord
   with_options presence: true do
-    validates :title, :text, :answer
+    validates :title, :text, :hide_answer
   end
 
   belongs_to :user

@@ -1,6 +1,6 @@
 class Answer < ApplicationRecord
   with_options presence: true do
-    validates :answer
+    validates :input_answer
   end
 
   belongs_to :user

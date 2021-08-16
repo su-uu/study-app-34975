@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_102146) do
   end
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "answer", null: false
+    t.text "input_answer", null: false
     t.bigint "user_id", null: false
     t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_102146) do
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "text", null: false
-    t.string "answer", null: false
+    t.text "hide_answer", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
