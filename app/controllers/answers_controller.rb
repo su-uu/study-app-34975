@@ -15,6 +15,9 @@ class AnswersController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def answer_params
