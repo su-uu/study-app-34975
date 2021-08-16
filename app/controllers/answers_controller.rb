@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_question, only: [:index, :create]
+  before_action :set_question, only: [:index, :create, :show]
 
   def index
     @answer = Answer.new
@@ -9,13 +9,14 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      redirect_to root_path
+      redirect_to controller: 'answers', action: 'show', id:@answer.id
     else
       render :index
     end
   end
 
   def show
+    @answer = Answer.find(params[:id])
   end
 
   private
