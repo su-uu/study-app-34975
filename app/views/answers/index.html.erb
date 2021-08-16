@@ -22,7 +22,8 @@
     </div>
     <%# /問題文 %>
 
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with model: @answer, url:question_answers_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= render 'devise/shared/error_messages', model: @answer %>
 
     <%# 解答欄 %>
     <div class="new-items">
