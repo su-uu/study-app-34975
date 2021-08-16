@@ -36,7 +36,7 @@
         <p class="or-text">or</p>
         <%= link_to "削除", question_path(@question.id), method: :delete, class:"item-destroy" %>
     <% end %>
-    <%= link_to "回答画面に進む", "#" ,class:"item-red-btn"%>
+    <%= link_to "解答画面に進む", question_answers_path(@question.id), class:"item-red-btn"%>
     <div class="item-explain-box">
       <span><%= "問題説明" %></span>
     </div>
