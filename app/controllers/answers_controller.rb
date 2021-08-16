@@ -19,6 +19,9 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
+  def destroy
+  end
+
   private
 
   def answer_params
