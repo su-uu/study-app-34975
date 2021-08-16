@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_question, only: [:index, :create, :show]
+  before_action :set_answer, only: [:show, :destroy]
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @answer = Answer.new
@@ -16,10 +17,11 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = Answer.find(params[:id])
   end
 
   def destroy
+    @answer.destroy
+    redirect_to root_path
   end
 
   private
@@ -30,5 +32,9 @@ class AnswersController < ApplicationController
 
   def set_question
     @question = Question.find(params[:question_id])
+  end
+
+  def set_answer
+    @answer = Answer.find(params[:id])
   end
 end
