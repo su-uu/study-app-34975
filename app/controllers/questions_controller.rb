@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only:[:show, :edit, :update]
+  before_action :set_question, only:[:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index, only: [:edit, :update]
 
@@ -35,6 +35,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    if @question.destroy
+      redirect_to root_path
+    else
+      redirect_to question_path
+    end
   end
 
   private
