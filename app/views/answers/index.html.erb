@@ -6,7 +6,16 @@
       <%= @question.title %>
     </h1>
     <div class="item-img-content">
-      <%= image_tag @question.image ,class:"item-box-img" %>
+      <%# 画像が保存されていなければ,サンプルの画像が表示される %>
+      <% if @question.image.attached? %>
+        <%= image_tag @question.image, class: "item-box-img" %>
+      <% else %>
+        <div class="weight-bold-text">
+          ※こちらの画像はサンプルです
+        </div>
+        <%= image_tag "item-sample.png", class: "item-box-img" %>
+      <% end %>
+      <%# //画像が保存されていなければ,サンプルの画像が表示される %>
     </div>
 
     <%# 問題文 %>
